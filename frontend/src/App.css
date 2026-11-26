@@ -1,0 +1,199 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  min-height: 100vh;
+  color: #e2e8f0;
+}
+
+.app {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.logo-icon {
+  font-size: 2.2rem;
+}
+
+.header h1 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #38bdf8, #818cf8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  color: #94a3b8;
+  font-size: 0.95rem;
+}
+
+.card {
+  background: rgba(30, 41, 59, 0.7);
+  border: 1px solid #334155;
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  backdrop-filter: blur(8px);
+}
+
+.connect-card {
+  text-align: center;
+}
+
+.btn {
+  border: none;
+  border-radius: 12px;
+  padding: 0.85rem 1.6rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, #3b82f6, #6366f1);
+  color: white;
+  width: 100%;
+  max-width: 320px;
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.35);
+}
+
+.btn-connected {
+  background: #1e293b;
+  color: #38bdf8;
+  border: 1px solid #38bdf8;
+  width: 100%;
+  max-width: 320px;
+}
+
+.btn-secondary {
+  background: #334155;
+  color: #e2e8f0;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: #475569;
+}
+
+.btn-vote {
+  background: linear-gradient(90deg, #10b981, #059669);
+  color: white;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.btn-vote:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(16, 185, 129, 0.3);
+}
+
+.message {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #94a3b8;
+}
+
+.message.success {
+  color: #34d399;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.candidates {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.candidate-card {
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid #334155;
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.2s;
+}
+
+.candidate-card:hover {
+  border-color: #6366f1;
+}
+
+.candidate-info h2 {
+  font-size: 1.4rem;
+  margin-bottom: 0.25rem;
+}
+
+.candidate-id {
+  color: #64748b;
+  font-size: 0.85rem;
+}
+
+.vote-count {
+  margin: 1rem 0 0.5rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.vote-count .count {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #38bdf8;
+}
+
+.vote-count .label {
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
+
+.empty {
+  text-align: center;
+  color: #64748b;
+  padding: 2rem;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 3rem;
+  color: #475569;
+  font-size: 0.8rem;
+}
+
+@media (min-width: 600px) {
+  .candidates {
+    grid-template-columns: 1fr 1fr;
+  }
+}

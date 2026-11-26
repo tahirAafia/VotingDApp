@@ -1,0 +1,49 @@
+{
+  "_format": "hh3-sol-build-info-1",
+  "id": "solc-0_8_34-fe1464486451ea8a2276fe9ba5320e71659d34c2",
+  "solcVersion": "0.8.34",
+  "solcLongVersion": "0.8.34+commit.80d5c536",
+  "compilerType": "solc",
+  "toolVersions": {
+    "hardhat": "3.22.0"
+  },
+  "userSourceNameMap": {
+    "contracts/Voting.sol": "project/contracts/Voting.sol"
+  },
+  "input": {
+    "language": "Solidity",
+    "settings": {
+      "evmVersion": "osaka",
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "outputSelection": {
+        "*": {
+          "": [
+            "ast"
+          ],
+          "*": [
+            "abi",
+            "evm.bytecode.linkReferences",
+            "evm.bytecode.object",
+            "evm.bytecode.opcodes",
+            "evm.bytecode.sourceMap",
+            "evm.deployedBytecode.immutableReferences",
+            "evm.deployedBytecode.linkReferences",
+            "evm.deployedBytecode.object",
+            "evm.deployedBytecode.opcodes",
+            "evm.deployedBytecode.sourceMap",
+            "evm.methodIdentifiers"
+          ]
+        }
+      },
+      "remappings": []
+    },
+    "sources": {
+      "project/contracts/Voting.sol": {
+        "content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.24;\n\ncontract Voting {\n    struct Candidate {\n        uint256 id;\n        string name;\n        uint256 voteCount;\n    }\n\n    address public owner;\n    uint256 public candidateCount;\n    mapping(uint256 => Candidate) public candidates;\n    mapping(address => bool) public hasVoted;\n\n    event CandidateAdded(uint256 id, string name);\n    event VoteCast(address voter, uint256 candidateId);\n\n    constructor() {\n        owner = msg.sender;\n    }\n    modifier onlyOwner() {\n        require(msg.sender == owner, \"Only owner can perform this action\");\n        _;\n    }\n\n    function addCandidate(string memory name) public onlyOwner {\n        require(bytes(name).length > 0, \"Candidate name cannot be empty\");\n        candidateCount++;\n        candidates[candidateCount] = Candidate({\n            id: candidateCount,\n            name: name,\n            voteCount: 0\n        });\n        emit CandidateAdded(candidateCount, name);\n    }\n    function vote(uint256 candidateId) public {\n        require(!hasVoted[msg.sender], \"You have already voted\");\n        require(candidateId > 0 && candidateId <= candidateCount, \"Invalid candidate ID\");\n        hasVoted[msg.sender] = true;\n        candidates[candidateId].voteCount++;\n        emit VoteCast(msg.sender, candidateId);\n    }\n}\n"
+      }
+    }
+  }
+}
